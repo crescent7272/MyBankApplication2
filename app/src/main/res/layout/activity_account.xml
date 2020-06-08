@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.AccountActivity"
+    android:background="#fff"
+    >
+
+    <RelativeLayout
+        android:id="@+id/bluebox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3B49EE"
+        android:paddingLeft="18dp"
+        android:paddingStart="18dp"
+        android:paddingRight="13dp"
+        android:paddingEnd="13dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="17dp"
+
+
+        >
+
+        <TextView
+            android:id="@+id/fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_lt"
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:text="Hilal Inan"
+            android:layout_marginBottom="47dp"
+            />
+
+        <ImageView
+            android:id="@+id/img_logout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/logout"
+            app:srcCompat="@mipmap/logout"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/fullname"
+            android:layout_alignBottom="@+id/fullname"
+            android:layout_toEndOf="@+id/fullname"
+            android:layout_toRightOf="@+id/fullname"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logout_text"
+            android:scaleType="fitEnd"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/contaText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_lt"
+            android:textColor="#FFF"
+            android:textSize="12sp"
+            android:text="@string/conta_text"
+            android:layout_below="@+id/fullname"
+            android:layout_marginBottom="6dp"
+            />
+
+        <TextView
+            android:id="@+id/conta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_lt"
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:text="2050 / 01.111222-4"
+            android:layout_below="@+id/contaText"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:id="@+id/saldoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_lt"
+            android:textColor="#FFF"
+            android:textSize="12sp"
+            android:text="@string/saldo_text"
+            android:layout_below="@+id/conta"
+            android:layout_marginBottom="6dp"
+            />
+
+        <TextView
+            android:id="@+id/saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/helvetica_neue_lt"
+            android:textColor="#FFF"
+            android:textSize="25sp"
+            android:text="R$1.000,00"
+            android:layout_below="@+id/saldoText"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/recentes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/helvetica_neue_med"
+        android:textColor="#485465"
+        android:textSize="17sp"
+        android:text="Recentes"
+        android:layout_below="@+id/bluebox"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="18dp"
+
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statementList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recentes"
+        android:layout_marginBottom="20dp"
+        />
+
+
+</RelativeLayout>
