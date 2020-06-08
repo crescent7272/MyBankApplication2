@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyBankApplication</string>
+    <string name="hint_username">User</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="conta_text">Conta</string>
+    <string name="saldo_text">Saldo</string>
+    <string name="logout_text">Logout</string>
+    <string name="login_response">loginresponse</string>
 </resources>
