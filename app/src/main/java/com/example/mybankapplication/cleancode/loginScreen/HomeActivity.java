@@ -69,10 +69,17 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
         login.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 LoginRequestModel loginRequestModel = new LoginRequestModel(username.getText().toString(), password.getText().toString());
 
+                 if(Utils.isValidUsername(username.getText().toString()) && Utils.isValidPassword(password.getText().toString()) ) {
 
-                 output.fetchHomeMetaData(loginRequestModel);
+                     LoginRequestModel loginRequestModel = new LoginRequestModel(username.getText().toString(), password.getText().toString());
+                     output.fetchHomeMetaData(loginRequestModel);
+                 }
+                 else
+                 {
+                     Toast.makeText(HomeActivity.this, "Username and/or password is invalid!", Toast.LENGTH_SHORT).show();
+
+                 }
              }
          }
         );
@@ -110,14 +117,13 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
                 putString(getString(R.string.password), password.getText().toString())
                 .apply();
 
-        //if(loginResponseModel.getError() == null) {
+        if(loginResponseModel.getUserAccount() != null && loginResponseModel.getUserAccount().getName() != null && !loginResponseModel.getUserAccount().getName().equals("")  ) {
             Toast.makeText(this, "Login is successfull!", Toast.LENGTH_SHORT).show();
 
             router.passDataToNextScene(loginResponseModel);
-/*
+
         }
         else
             Toast.makeText(this, "Login is failed!", Toast.LENGTH_SHORT).show();
-*/
     }
 }

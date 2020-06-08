@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.mybankapplication.R;
 import com.example.mybankapplication.model.UserAccount;
+import com.example.mybankapplication.util.Utils;
 
 public class HomeInteractor implements HomeInteractorInput{
 
@@ -29,8 +30,9 @@ public class HomeInteractor implements HomeInteractorInput{
         //retrieve from the shared preferences
         Log.e(TAG,"In method fetchHomeMetaData");
         aHomeWorkerInput = getHomeWorkerInput();
-        //LoginResponseModel homeResponse;
-        /*homeResponse = */aHomeWorkerInput.getUserAccount(request.getUser(), request.getPassword(),
+
+
+        aHomeWorkerInput.getUserAccount(request.getUser(), request.getPassword(),
                 new RevealCourtPlaceCallbacks() {
                     @Override
                     public void onSuccess(@NonNull LoginResponseModel loginResponseModel) {
@@ -46,23 +48,6 @@ public class HomeInteractor implements HomeInteractorInput{
                     }
                 });
 
-
-        //NO NEED
-        //output.presentHomeData(homeResponse);
-
-        /*
-        if(request.isFutureTrips) {
-            homeResponse.listOfFlights = flightWorkerInput.getFutureFlights();
-        } else {
-            homeResponse.listOfFlights = flightWorkerInput.getPastFlights();
-        }
-
-
-        //TODO : Add failure case here
-        if(null == homeResponse.listOfFlights || homeResponse.listOfFlights.isEmpty()) {
-            throw new ArrayEmptyException("Empty Flight List");
-        }
-*/
 
 
     }
