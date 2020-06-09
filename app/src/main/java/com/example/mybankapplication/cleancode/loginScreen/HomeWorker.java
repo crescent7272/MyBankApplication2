@@ -1,17 +1,11 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
-import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.mybankapplication.R;
-import com.example.mybankapplication.activity.AccountActivity;
-import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
-import com.example.mybankapplication.network.RetrofitInstance;
+import com.example.mybankapplication.cleancode.util.RetrofitInstance;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -55,12 +49,6 @@ public class HomeWorker implements HomeWorkerInput, View.OnClickListener{
                     //send respond to router.
                     if (callbacks != null)
                         callbacks.onSuccess(response.body());
-
-/*
-                    Intent myIntent = new Intent(HomeActivity.this, AccountActivity.class);
-                    myIntent.putExtra("response",responseS);
-                    HomeActivity.this.startActivity(myIntent);
-*/
                 }
 
 

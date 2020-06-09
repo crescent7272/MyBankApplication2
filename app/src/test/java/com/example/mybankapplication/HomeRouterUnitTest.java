@@ -1,13 +1,11 @@
 package com.example.mybankapplication;
 
 
-import android.content.Intent;
-
 import com.example.mybankapplication.cleancode.loginScreen.HomeActivity;
 import com.example.mybankapplication.cleancode.loginScreen.HomeRouter;
 import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 import com.example.mybankapplication.cleancode.statementsScreen.StatementsActivity;
-import com.example.mybankapplication.model.UserAccount;
+import com.example.mybankapplication.cleancode.model.UserAccount;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -18,9 +16,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
 import java.lang.ref.WeakReference;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by mkaratadipalayam on 28/05/17.

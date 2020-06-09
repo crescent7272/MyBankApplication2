@@ -9,11 +9,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mybankapplication.R;
-import com.example.mybankapplication.util.Utils;
+import com.example.mybankapplication.cleancode.util.Utils;
 
 import java.util.List;
 
-import static com.example.mybankapplication.util.Utils.formatCurrency;
+import static com.example.mybankapplication.cleancode.util.Utils.formatCurrency;
 
 public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MyViewHolder> {
 

@@ -1,7 +1,7 @@
 package com.example.mybankapplication.cleancode.statementsScreen;
 
-import com.example.mybankapplication.model.LoginRequestModel;
-import com.example.mybankapplication.model.LoginResponseModel;
+import com.example.mybankapplication.cleancode.loginScreen.LoginRequestModel;
+import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

@@ -1,13 +1,8 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
-import android.content.res.Resources;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-
-import com.example.mybankapplication.R;
-import com.example.mybankapplication.model.UserAccount;
-import com.example.mybankapplication.util.Utils;
 
 public class HomeInteractor implements HomeInteractorInput{
 

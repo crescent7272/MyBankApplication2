@@ -16,11 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mybankapplication.R;
 import com.example.mybankapplication.cleancode.loginScreen.HomeActivity;
 import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
-import com.example.mybankapplication.util.Utils;
+import com.example.mybankapplication.cleancode.util.Utils;
 import com.google.gson.Gson;
-
-import static com.example.mybankapplication.cleancode.loginScreen.HomeActivity.sharedPreferences;
-
 
 interface StatementsActivityInput {
     public void displayStatementsData(StatementsViewModel viewModel);

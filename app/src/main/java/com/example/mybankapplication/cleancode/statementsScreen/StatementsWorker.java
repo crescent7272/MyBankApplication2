@@ -1,18 +1,11 @@
 package com.example.mybankapplication.cleancode.statementsScreen;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mybankapplication.R;
-import com.example.mybankapplication.adapter.StatementAdapter;
 import com.example.mybankapplication.cleancode.GetNoticeDataService;
-import com.example.mybankapplication.model.AccountResponseModel;
-import com.example.mybankapplication.network.RetrofitInstance;
+import com.example.mybankapplication.cleancode.util.RetrofitInstance;
 import com.google.gson.Gson;
 
 import retrofit2.Call;

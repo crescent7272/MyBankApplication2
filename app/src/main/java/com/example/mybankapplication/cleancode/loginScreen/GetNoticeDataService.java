@@ -1,8 +1,6 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
-import com.example.mybankapplication.model.AccountResponseModel;
-import com.example.mybankapplication.cleancode.loginScreen.LoginRequestModel;
-import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
+import com.example.mybankapplication.cleancode.statementsScreen.StatementsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -21,6 +19,6 @@ public interface GetNoticeDataService {
     Call<LoginResponseModel> login(@Body LoginRequestModel notice);
 
     @GET("statements/{idUser}")
-    Call<AccountResponseModel> getAccountDetails(@Path("idUser") Integer idUser);
+    Call<StatementsResponse> getAccountDetails(@Path("idUser") Integer idUser);
 
 }

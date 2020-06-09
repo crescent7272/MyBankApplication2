@@ -1,15 +1,9 @@
 package com.example.mybankapplication;
 
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-
 import com.example.mybankapplication.cleancode.loginScreen.HomeActivityInput;
 import com.example.mybankapplication.cleancode.loginScreen.HomePresenter;
-import com.example.mybankapplication.cleancode.loginScreen.HomeWorker;
 import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
-import com.example.mybankapplication.cleancode.loginScreen.RevealCourtPlaceCallbacks;
-import com.example.mybankapplication.model.UserAccount;
+import com.example.mybankapplication.cleancode.model.UserAccount;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -19,8 +13,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by mkaratadipalayam on 11/10/16.
