@@ -1,5 +1,7 @@
-package com.example.mybankapplication.cleancode.loginScreen;
+package com.example.mybankapplication.cleancode.api;
 
+import com.example.mybankapplication.cleancode.loginScreen.LoginRequestModel;
+import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 import com.example.mybankapplication.cleancode.statementsScreen.StatementsResponse;
 
 import retrofit2.Call;

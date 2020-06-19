@@ -1,18 +1,15 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
-import com.example.mybankapplication.cleancode.UserAccount;
+import com.example.mybankapplication.cleancode.model.UserAccount;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 class LoginModel {
-    //LoginRequestModel loginRequestModel = new LoginRequestModel();
-
 }
 
 class LoginViewModel {
     //filter to have only the needed data
     private LoginRequestModel loginRequestModel = new LoginRequestModel();
-
     public LoginRequestModel getLoginRequestModel() {
         return loginRequestModel;
     }

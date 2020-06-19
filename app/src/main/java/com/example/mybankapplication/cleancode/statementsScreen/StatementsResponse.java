@@ -1,5 +1,6 @@
 package com.example.mybankapplication.cleancode.statementsScreen;
 
+import com.example.mybankapplication.cleancode.model.StatementList;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -11,11 +12,7 @@ class StatementsModel {
 }
 
 class StatementsViewModel {
-
-    //filter to have only the needed data
-
     ArrayList<StatementList> statementList;
-
 }
 
 class StatementsRequest {

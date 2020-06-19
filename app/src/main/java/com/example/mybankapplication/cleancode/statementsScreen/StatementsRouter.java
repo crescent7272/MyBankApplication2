@@ -33,8 +33,6 @@ public class StatementsRouter implements StatementsRouterInput, AdapterView.OnIt
     @Override
     public void passDataToNextScene(int position, Intent intent) {
         //Based on the position or someother data decide the data for the next scene
-        // StatementsModel flight = activity.get().listOfSomething.get(position);
-        // intent.putExtra("flight",flight);
     }
 
     @Override

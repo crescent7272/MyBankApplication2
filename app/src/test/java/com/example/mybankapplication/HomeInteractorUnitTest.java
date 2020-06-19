@@ -153,56 +153,12 @@ public class HomeInteractorUnitTest {
             boolean isgetHomeWorkerMethodCalled = true;
             callbacks.onSuccess(new LoginResponseModel());
         }
-        /*
-        @Override
-        public ArrayList<FlightModel> getFutureFlights() {
-            isgetFutureFlightsMethodCalled = true;
-            return getFlightModels();
-        }
-
-        @Override
-        public ArrayList<FlightModel> getPastFlights() {
-            isgetPastFlightsMethodCalled = true;
-            return getFlightModels();
-        }
-
-        @NonNull
-        private ArrayList<FlightModel> getFlightModels() {
-            ArrayList<FlightModel> flightsList = new ArrayList<>();
-            FlightModel flight1 = new FlightModel();
-            flight1.flightName = "9Z 231";
-            flight1.startingTime = "2016/10/31";
-            flight1.departureCity = "BLR";
-            flight1.arrivalCity = "CJB";
-            flight1.departureTime = "18:10";
-            flight1.arrivalTime = "19:00";
-            flightsList.add(flight1);
-            return flightsList;
-        }
-
-
-         */
     }
 
     private class HomeWorkerInputReturnNullSpy implements HomeWorkerInput {
 
         boolean isgetHomeWorkerMethodCalled = false;
-/*
-        boolean isgetFlightsMethodCalled = false;
-        boolean isgetPastFlightsMethodCalled = false;
 
-        @Override
-        public ArrayList<FlightModel> getFutureFlights() {
-            isgetFlightsMethodCalled = true;
-            return null;
-        }
-
-        @Override
-        public ArrayList<FlightModel> getPastFlights() {
-            isgetPastFlightsMethodCalled = true;
-            return null;
-        }
-*/
         @Override
         public void getUserAccount(String username, String password, @Nullable RevealCourtPlaceCallbacks callbacks) {
             isgetHomeWorkerMethodCalled = true;

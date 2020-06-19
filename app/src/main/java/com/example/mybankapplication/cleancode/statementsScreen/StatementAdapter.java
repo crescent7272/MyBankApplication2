@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mybankapplication.R;
+import com.example.mybankapplication.cleancode.model.StatementList;
 import com.example.mybankapplication.cleancode.util.Utils;
 
 import java.util.List;
@@ -20,14 +21,7 @@ public class StatementAdapter extends RecyclerView.Adapter<StatementAdapter.MyVi
     private List<StatementList> statementList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        /*
-        * "title": "Pagamento",
-            "desc": "Conta de luz",
-            "date": "2018-08-15",
-            "value": -50
-        *
-        *
-        * */
+
         public TextView title, desc, date, value;
 
         public MyViewHolder(View view) {

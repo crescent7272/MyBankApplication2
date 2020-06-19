@@ -18,12 +18,9 @@ public class HomeRouter implements HomeRouterInput {
 
     public static String TAG = HomeRouter.class.getSimpleName();
     public WeakReference<HomeActivity> activity;
-    //HomeWorker
-
 
     @Override
     public void passDataToNextScene(LoginResponseModel loginResponseModel) {
-        //Based on the position or someother data decide the data for the next scene
 
         Gson gson = new Gson();
         String responseS = gson.toJson(loginResponseModel);
@@ -34,6 +31,5 @@ public class HomeRouter implements HomeRouterInput {
         activity.get().startActivity(intent);
 
     }
-
 
 }

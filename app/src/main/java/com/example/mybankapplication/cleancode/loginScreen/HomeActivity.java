@@ -1,9 +1,7 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,13 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mybankapplication.R;
-import com.example.mybankapplication.cleancode.loginScreen.GetNoticeDataService;
 import com.example.mybankapplication.cleancode.util.Utils;
-import com.google.gson.Gson;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity implements HomeActivityInput {
 
@@ -51,21 +43,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
 
         fetchMetaData();
 
-            /* min API 19 does not support
-            sharedPreferences = EncryptedSharedPreferences.create(
-                    "secret_shared_prefs",
-                    masterKeyAlias,
-                    getApplicationContext(),
-                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-            );
-            */
-
-
-        // use the shared preferences and editor as you normally would
-
-
-//router
         login.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -78,7 +55,6 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
                  else
                  {
                      Toast.makeText(HomeActivity.this, "Username and/or password is invalid!", Toast.LENGTH_SHORT).show();
-
                  }
              }
          }
@@ -91,17 +67,9 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityInput
         String username = sharedPreferences.getString(getString(R.string.username),"");
         String password = sharedPreferences.getString(getString(R.string.password),"");
 
-        // create Request and set the needed input
-        /*
-        LoginRequestModel homeRequest = new LoginRequestModel();
-
-        homeRequest.setUser(username);
-        homeRequest.setPassword(password);
-        */
         this.username.setText(username);
         this.password.setText(password);
 
-        // Call the output to fetch the data
     }
 
 

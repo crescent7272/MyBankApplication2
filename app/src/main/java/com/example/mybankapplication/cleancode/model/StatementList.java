@@ -1,4 +1,4 @@
-package com.example.mybankapplication.cleancode;
+package com.example.mybankapplication.cleancode.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

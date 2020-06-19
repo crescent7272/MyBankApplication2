@@ -50,18 +50,14 @@ public class StatementsActivity extends AppCompatActivity
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorBase));
         }
 
-
         bindViews();
         StatementsConfigurator.INSTANCE.configure(this);
 
         responseModel = fetchMetaData();
         populateViews(responseModel);
         StatementsRequest aStatementsRequest = new StatementsRequest();
-        //populate the request
-
         aStatementsRequest.idUser = responseModel.getUserAccount().getUserId();
         output.fetchStatementsData(aStatementsRequest);
-        // Do other work
     }
 
     private void bindViews() {
@@ -73,10 +69,6 @@ public class StatementsActivity extends AppCompatActivity
         img_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*
-                *
-                * TODO maybe define a router?*/
                 Intent myIntent = new Intent(StatementsActivity.this, HomeActivity.class);
                 StatementsActivity.this.startActivity(myIntent);
             }
@@ -95,20 +87,7 @@ public class StatementsActivity extends AppCompatActivity
         responseModel = gson.fromJson(loginResponseJson, LoginResponseModel.class);
 
         return responseModel;
-        //String username = sharedPreferences.getString(getString(R.string.username),"");
-        //String password = sharedPreferences.getString(getString(R.string.password),"");
 
-        // create Request and set the needed input
-        /*
-        LoginRequestModel homeRequest = new LoginRequestModel();
-
-        homeRequest.setUser(username);
-        homeRequest.setPassword(password);
-        */
-        //this.username.setText(username);
-        //this.password.setText(password);
-
-        // Call the output to fetch the data
     }
 
     @Override
@@ -132,12 +111,7 @@ public class StatementsActivity extends AppCompatActivity
             recyclerView.setItemAnimator(new DefaultItemAnimator());
             recyclerView.setAdapter(statementAdapter);
         }
-
-
     }
-
-
-
 }
 
 

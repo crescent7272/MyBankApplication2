@@ -1,4 +1,4 @@
-package com.example.mybankapplication.cleancode.util;
+package com.example.mybankapplication.cleancode.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -17,18 +17,12 @@ public class RetrofitInstance {
      */
 
     public static Retrofit getRetrofitInstance() {
-        //if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(getBaseUrl())
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
 
-
-       // }
+        retrofit = new Retrofit.Builder()
+                .baseUrl(getBaseUrl())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
         return retrofit;
-
     }
-
-
 }

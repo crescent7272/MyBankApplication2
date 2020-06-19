@@ -4,8 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.mybankapplication.cleancode.GetNoticeDataService;
-import com.example.mybankapplication.cleancode.util.RetrofitInstance;
+import com.example.mybankapplication.cleancode.api.GetNoticeDataService;
+import com.example.mybankapplication.cleancode.api.RetrofitInstance;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -46,19 +46,6 @@ public class StatementsWorker implements StatementsWorkerInput {
                         callbacks.onSuccess(response.body());
                     else
                         callbacks.onError(new NullPointerException());
-
-                    /*
-                    recyclerView = findViewById(R.id.statementList);
-                    if (response.body() != null) {
-                        statementAdapter = new StatementAdapter(response.body().getStatementList());
-                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
-                        recyclerView.setLayoutManager(mLayoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                        recyclerView.setAdapter(statementAdapter);
-
-                    }
-                    */
                 }
             }
 
@@ -70,8 +57,5 @@ public class StatementsWorker implements StatementsWorkerInput {
                     callbacks.onError(t);
             }
         });
-
-
-
     }
 }

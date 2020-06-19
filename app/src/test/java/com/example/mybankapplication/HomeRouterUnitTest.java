@@ -63,7 +63,4 @@ public class HomeRouterUnitTest {
         Assert.assertEquals("When the loginResponseModel is passed to HomeRouter"
                 +" Then next Intent should be StatementsActivity",targetActivityName, StatementsActivity.class.getName());
     }
-
-
-
 }

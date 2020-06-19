@@ -1,11 +1,11 @@
 package com.example.mybankapplication.cleancode.loginScreen;
 
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.mybankapplication.cleancode.util.RetrofitInstance;
+import com.example.mybankapplication.cleancode.api.GetNoticeDataService;
+import com.example.mybankapplication.cleancode.api.RetrofitInstance;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -14,7 +14,7 @@ import retrofit2.Response;
 
 
 //call the api
-public class HomeWorker implements HomeWorkerInput, View.OnClickListener{
+public class HomeWorker implements HomeWorkerInput{
 
     String username;
     @Override
@@ -28,7 +28,6 @@ public class HomeWorker implements HomeWorkerInput, View.OnClickListener{
 
         /** Call the method with parameter in the interface to get the notice data*/
         Call<LoginResponseModel> call = service.login(loginRequestModel);
-
 
         /**Log the URL called*/
         Log.d("URL Called", call.request().url() +"");
@@ -50,29 +49,15 @@ public class HomeWorker implements HomeWorkerInput, View.OnClickListener{
                     if (callbacks != null)
                         callbacks.onSuccess(response.body());
                 }
-
-
-
             }
 
             @Override
             public void onFailure(Call<LoginResponseModel> call, Throwable t) {
                 Log.d("onfailure", t.getMessage() + "");
-                //Toast.makeText(HomeActivity.this, "An error occurred ... Error message: "+t.getMessage(), Toast.LENGTH_SHORT).show();
                 if (callbacks != null)
                     callbacks.onError(t);
             }
         });
 
-        //return null;
     }
-
-    @Override
-    public void onClick(View v) {
-
-
-
-    }
-
-
 }
