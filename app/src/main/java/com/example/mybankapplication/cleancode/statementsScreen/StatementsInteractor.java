@@ -6,16 +6,6 @@ import androidx.annotation.NonNull;
 
 import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 
-interface StatementsInteractorInput {
-    public void fetchStatementsData(StatementsRequest request);
-}
-
-interface GetStatementsCallbacks {
-    void onSuccess(@NonNull StatementsResponse value);
-    void onError(@NonNull Throwable throwable);
-}
-
-
 public class StatementsInteractor implements StatementsInteractorInput {
 
     public static String TAG = StatementsInteractor.class.getSimpleName();
@@ -34,6 +24,7 @@ public class StatementsInteractor implements StatementsInteractorInput {
     @Override
     public void fetchStatementsData(StatementsRequest request) {
         aStatementsWorkerInput = getStatementsWorkerInput();
+
         // Call the workers
         aStatementsWorkerInput.getStatements(request.idUser, new GetStatementsCallbacks() {
 
@@ -47,6 +38,7 @@ public class StatementsInteractor implements StatementsInteractorInput {
                 throwable.printStackTrace();
 
             }
+
         });
     }
 }

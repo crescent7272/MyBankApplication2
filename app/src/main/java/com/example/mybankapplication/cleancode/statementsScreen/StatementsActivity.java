@@ -19,17 +19,12 @@ import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 import com.example.mybankapplication.cleancode.util.Utils;
 import com.google.gson.Gson;
 
-interface StatementsActivityInput {
-    public void displayStatementsData(StatementsViewModel viewModel);
-    public void populateViews(LoginResponseModel viewModel);
-}
-
 
 public class StatementsActivity extends AppCompatActivity
         implements StatementsActivityInput {
 
     public static String TAG = StatementsActivity.class.getSimpleName();
-    StatementsInteractorInput output;
+    public StatementsInteractorInput output;
     StatementsRouter router;
     private Gson gson;
     private LoginResponseModel responseModel;
@@ -41,7 +36,7 @@ public class StatementsActivity extends AppCompatActivity
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //do the setup
 
@@ -49,15 +44,17 @@ public class StatementsActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorBase));
         }
+        StatementsConfigurator.INSTANCE.configure(this);
 
         bindViews();
-        StatementsConfigurator.INSTANCE.configure(this);
 
         responseModel = fetchMetaData();
         populateViews(responseModel);
         StatementsRequest aStatementsRequest = new StatementsRequest();
-        aStatementsRequest.idUser = responseModel.getUserAccount().getUserId();
-        output.fetchStatementsData(aStatementsRequest);
+        if(responseModel!=null) {
+            aStatementsRequest.idUser = responseModel.getUserAccount().getUserId();
+            output.fetchStatementsData(aStatementsRequest);
+        }
     }
 
     private void bindViews() {
@@ -92,9 +89,12 @@ public class StatementsActivity extends AppCompatActivity
 
     @Override
     public void populateViews(LoginResponseModel viewModel) {
-        fullName.setText(responseModel.getUserAccount().getName());
-        bankAccount.setText(responseModel.getUserAccount().getBankAccount());
-        balance.setText("R$"+ Utils.formatCurrency(responseModel.getUserAccount().getBalance()));
+
+        if(viewModel!=null) {
+            fullName.setText(viewModel.getUserAccount().getName());
+            bankAccount.setText(viewModel.getUserAccount().getBankAccount());
+            balance.setText("R$" + Utils.formatCurrency(viewModel.getUserAccount().getBalance()));
+        }
     }
 
     @Override

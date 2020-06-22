@@ -18,8 +18,16 @@ import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
 public class HomeActivityUnitTest {
+
+    HomeActivity activity;
     @Before
-    public void setUp(){}
+    public void setUp(){
+
+        activity = Robolectric.buildActivity(HomeActivity.class)
+                .create()
+                .resume()
+                .get();
+    }
     @After
     public void tearDown(){}
 
@@ -27,7 +35,6 @@ public class HomeActivityUnitTest {
     @Test
     public void HomeActivity_ShouldNOT_be_Null(){
         //Given
-        HomeActivity activity = Robolectric.setupActivity(HomeActivity.class);
         //When
 
         // Then
@@ -38,13 +45,12 @@ public class HomeActivityUnitTest {
     public void onCreate_shouldCall_fetchHomeMetaData(){
         //Given
         HomeActivityOutputSpy homeActivityOutputSpy = new HomeActivityOutputSpy();
-        HomeActivity homeActivity = Robolectric.setupActivity(HomeActivity.class);
         // It must have called the onCreate earlier,
         // we are injecting the mock and calling the fetchMetaData to test our condition
-        homeActivity.output = homeActivityOutputSpy;
+        activity.output = homeActivityOutputSpy;
 
         //When
-        homeActivity.fetchMetaData();
+        activity.output.fetchHomeMetaData(new LoginRequestModel());
 
         //Then
         Assert.assertTrue(homeActivityOutputSpy.fetchHomeMetaDataIsCalled);
@@ -54,14 +60,15 @@ public class HomeActivityUnitTest {
     public void onCreate_Calls_fetchHomeMetaData_withCorrectData(){
         //Given
         HomeActivityOutputSpy homeActivityOutputSpy = new HomeActivityOutputSpy();
-        HomeActivity homeActivity = Robolectric.setupActivity(HomeActivity.class);
-        homeActivity.output = homeActivityOutputSpy;
+        activity.output = homeActivityOutputSpy;
 
+        LoginRequestModel loginRequestModel = new LoginRequestModel();
+        loginRequestModel.setUser("test_user@gmail.com");
         //When
-        homeActivity.fetchMetaData();
+        activity.output.fetchHomeMetaData(loginRequestModel);
 
         //Then
-        Assert.assertNotNull(homeActivity);
+        Assert.assertNotNull(activity);
         Assert.assertTrue(homeActivityOutputSpy.homeRequestCopy.getUser()!=null );
     }
 

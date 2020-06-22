@@ -5,10 +5,6 @@ import com.example.mybankapplication.cleancode.model.StatementList;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-interface StatementsPresenterInput {
-    public void presentStatementsData(StatementsResponse response);
-}
-
 
 public class StatementsPresenter implements StatementsPresenterInput {
 
@@ -23,6 +19,7 @@ public class StatementsPresenter implements StatementsPresenterInput {
         statementsViewModel.statementList = new ArrayList<>();
 
 
+
         if (response.getStatementList() != null) {
 
             for (StatementList fm : response.getStatementList()) {
@@ -35,3 +32,4 @@ public class StatementsPresenter implements StatementsPresenterInput {
 
 
 }
+

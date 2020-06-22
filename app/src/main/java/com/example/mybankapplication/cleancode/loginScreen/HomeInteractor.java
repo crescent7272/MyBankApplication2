@@ -26,7 +26,6 @@ public class HomeInteractor implements HomeInteractorInput{
         Log.e(TAG,"In method fetchHomeMetaData");
         aHomeWorkerInput = getHomeWorkerInput();
 
-
         aHomeWorkerInput.getUserAccount(request.getUser(), request.getPassword(),
                 new RevealCourtPlaceCallbacks() {
                     @Override

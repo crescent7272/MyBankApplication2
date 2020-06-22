@@ -1,15 +1,15 @@
 package com.example.mybankapplication;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mybankapplication.cleancode.loginScreen.HomeInteractor;
 import com.example.mybankapplication.cleancode.loginScreen.HomePresenterInput;
 import com.example.mybankapplication.cleancode.loginScreen.HomeWorker;
 import com.example.mybankapplication.cleancode.loginScreen.HomeWorkerInput;
+import com.example.mybankapplication.cleancode.loginScreen.LoginRequestModel;
 import com.example.mybankapplication.cleancode.loginScreen.LoginResponseModel;
 import com.example.mybankapplication.cleancode.loginScreen.RevealCourtPlaceCallbacks;
-import com.example.mybankapplication.cleancode.loginScreen.LoginRequestModel;
-import com.example.mybankapplication.cleancode.util.Utils;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -18,13 +18,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
  * Created by mkaratadipalayam on 12/10/16.
  */
+
 @RunWith(RobolectricTestRunner.class)
 public class HomeInteractorUnitTest {
     @Before
@@ -41,44 +41,42 @@ public class HomeInteractorUnitTest {
         //Given
         HomeInteractor homeInteractor = new HomeInteractor();
         LoginRequestModel homeRequest = new LoginRequestModel();
-        homeRequest.setUser("test_user");
+        homeRequest.setUser("test_user@gmail.com");
         homeRequest.setPassword("Test@1");
-        HomePresenterInputSpy homePresenterInputSpy = new HomePresenterInputSpy();
+        final HomePresenterInputSpy homePresenterInputSpy = new HomePresenterInputSpy();
+        HomeWorkerInputSpy homeWorkerInputSpy = new HomeWorkerInputSpy();
+
         homeInteractor.output = homePresenterInputSpy;
-        //When
-        homeInteractor.fetchHomeMetaData(homeRequest);
+        homeInteractor.aHomeWorkerInput = homeWorkerInputSpy;
 
-        //Then
-        Assert.assertTrue("When the valid input is passed to HomeInteractor " +
-                        "Then presentHomeMetaData should be called",
-                 homePresenterInputSpy.presentHomeMetaDataIsCalled);
-    }
-
-    @Test
-    public void fetchHomeMetaData_with_validInput_shouldCall_Worker_getUserAccount(){
-        //Given
-        HomeInteractor homeInteractor = new HomeInteractor();
-        LoginRequestModel homeRequest = new LoginRequestModel();
-        homeRequest.setUser("test_user");
-        homeRequest.setPassword("Test@1");
-        //Setup TestDoubles
-        homeInteractor.output = new HomePresenterInputSpy();
-        HomeWorkerInputSpy flightWorkerInputSpy = new HomeWorkerInputSpy();
-        homeInteractor.setHomeWorkerInput(flightWorkerInputSpy);
 
         //When
         homeInteractor.fetchHomeMetaData(homeRequest);
+        homeInteractor.aHomeWorkerInput.getUserAccount(homeRequest.getUser(), homeRequest.getPassword(), new RevealCourtPlaceCallbacks() {
+            @Override
+            public void onSuccess(@NonNull LoginResponseModel value) {
+                //Then
 
-        //Then
-        Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip" +
-                "Then getFutureFlights should be called in Worker",
-                flightWorkerInputSpy.isgetHomeWorkerMethodCalled);
+                Assert.assertTrue("When the valid input is passed to HomeInteractor " +
+                                "Then presentHomeMetaData should be called",
+                        homePresenterInputSpy.presentHomeMetaDataIsCalled);
+            }
+
+            @Override
+            public void onError(@NonNull Throwable throwable) {
+
+            }
+        });
+
     }
 
     @Test
-    public void fetchHomeMetaData_with_invalidInput_shouldNotCall_Worker_getPastTrips(){
+    public void fetchHomeMetaData_with_invalidInput_shouldNotCall_presentHomeMetaData(){
         //Given
         HomeInteractor homeInteractor = new HomeInteractor();
+        final HomePresenterInputSpy homePresenterInputSpy = new HomePresenterInputSpy();
+        homeInteractor.output = homePresenterInputSpy;
+
         ArrayList<String> invalidEmails = new ArrayList<>(Arrays. asList(
 
                 "plainaddress",
@@ -121,11 +119,21 @@ public class HomeInteractorUnitTest {
             homeRequest.setUser(email);
             //When
             homeInteractor.fetchHomeMetaData(homeRequest);
+            homeInteractor.aHomeWorkerInput.getUserAccount(homeRequest.getUser(), homeRequest.getPassword(), new RevealCourtPlaceCallbacks() {
+                @Override
+                public void onSuccess(@NonNull LoginResponseModel value) {
+                    //Then
+                    Assert.assertFalse("When the invalid input is passed to HomeInteractor " +
+                                    "Then presentHomeMetaData should NOT be called",
+                            homePresenterInputSpy.presentHomeMetaDataIsCalled);
 
-            //Then
-            Assert.assertTrue("When the invalid input is passed to HomeInteractor is FutureTrip" +
-                            "Then getFutureFlights should be called in Worker",
-                    flightWorkerInputSpy.isgetHomeWorkerMethodCalled);
+                }
+
+                @Override
+                public void onError(@NonNull Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            });
 
         }
 

@@ -11,15 +11,6 @@ class StatementsModel {
 
 }
 
-class StatementsViewModel {
-    ArrayList<StatementList> statementList;
-}
-
-class StatementsRequest {
-
-    Integer idUser;
-}
-
 public class StatementsResponse {
 
 

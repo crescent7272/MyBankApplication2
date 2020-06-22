@@ -12,11 +12,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-interface StatementsWorkerInput {
-    //Define needed interfaces
-    void getStatements(Integer id, @Nullable GetStatementsCallbacks callbacks);
-}
-
 public class StatementsWorker implements StatementsWorkerInput {
 
     @Override
